@@ -4,6 +4,17 @@
     line-height: 29px;
     max-width: 358px;
     min-height: 27px;
- 
 
+
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .popup__title {
+        font-size: 18px;
+        line-height: 22px;
+        max-width: 238px;
+    min-height: 22px;
+    margin-top: 0;
+    margin-bottom: 75px;
+    }
 }

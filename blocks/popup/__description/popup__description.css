@@ -5,3 +5,8 @@
     min-height: 27px;
 
 }
+@media (min-width: 320px) and (max-width: 767px) {
+    .popup__description {
+        width: 238px;
+    }
+}

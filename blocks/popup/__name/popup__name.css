@@ -4,3 +4,8 @@
     margin-bottom: 30px;
     width: 358px;  
 }
+@media (min-width: 320px) and (max-width: 767px) {
+    .popup__name {
+        width: 238px;
+    }
+}
