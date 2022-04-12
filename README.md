@@ -9,4 +9,4 @@
 * Файловая структура организована по методологии БЭМ Nested.
 * Данную работу необходимо было сделать сайт по макету из Figma.
 
-Ссылка на проект [https://winory00.github.io/russian-travel/]
+Ссылка на проект [https://winory00.github.io/mesto/index.html]
