@@ -1,0 +1,7 @@
+.popup__description {
+    border: none;
+    border-bottom: 1px rgba(0, 0, 0, .2) solid;
+    width: 358px;
+    min-height: 27px;
+
+}

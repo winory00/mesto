@@ -1,0 +1,14 @@
+.element {
+    background-color: #FFFFFF;
+    max-width: 282px;
+    min-height: 362px;
+    border-radius: 5%;
+    
+}
+
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .element {
+        padding: 0;
+    }
+}
