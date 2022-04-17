@@ -1,10 +1,4 @@
 .element__like_is-active {
     background: transparent url(../../../../images/likeActive.svg) center no-repeat;
-    width: 22px;
-    height: 19px;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    border: none;
-    cursor: pointer;
+
 }

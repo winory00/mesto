@@ -1,13 +1,16 @@
 const editButtonLink = document.querySelector('.profile__edit-button');
-const ModalWindow = document.querySelector('.popup');
-const ModalCloseBtn = ModalWindow.querySelector('.popup__close');
+const modalWindow = document.querySelector('.popup');
+const modalCloseBtn = modalWindow.querySelector('.popup__close');
+let formElement = document.querySelector('.popup__form');
+let nameInput = document.querySelector('[name="form__name"]');
+let jobInput = document.querySelector('[name="form__description"]');
+const textInput = document.querySelector('input');
 
 function toggleModalWindow() {
-    ModalWindow.classList.toggle('popup_is-active');
+    modalWindow.classList.toggle('popup_is-active');
 }
 
-editButtonLink.addEventListener('click', toggleModalWindow);
-ModalCloseBtn.addEventListener('click', toggleModalWindow);
+
 
 function onOverlayClick(event) {
     console.log('event.target', event.target);
@@ -17,43 +20,21 @@ function onOverlayClick(event) {
     }
 }
 
-ModalWindow.addEventListener('click', onOverlayClick);
-
-
-const popupForm = document.querySelector('.popup__form');
-const textInput = document.querySelector('input');
-
-function onSubmit(e) {
-    e.preventDefault();
-    console.log('submit', textInput.value);
-
-
-}
-
-popupForm.addEventListener('submit', onSubmit);
-
-
-let formElement = document.querySelector('.popup__form');
-let nameInput = document.querySelector('.popup__name');
-let jobInput = document.querySelector('.popup__description');
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
 
-    nameInput.value = nameInput.textContent;
-    jobInput.value = jobInput.textContent;
+    nameInput.value = nameInput.value.textContent;
+    jobInput.value = jobInput.value.textContent;
 
 }
+
+modalWindow.addEventListener('click', onOverlayClick);
+editButtonLink.addEventListener('click', toggleModalWindow);
+modalCloseBtn.addEventListener('click', toggleModalWindow);
+
+
+
+
 formElement.addEventListener('submit', formSubmitHandler);
-
-
-const LikeButtons = document.querySelectorAll('.element__like');
-
-for (let i = 0; i < LikeButtons.length; i++) {
-    let ActiveButton = LikeButtons[i];
-    ActiveButton.addEventListener('click', function () {
-        ActiveButton.classList.toggle('element__like_is-active');
-    })
-
-}
 

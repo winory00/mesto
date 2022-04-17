@@ -4,16 +4,17 @@
     line-height: 22px;
     margin-top: 5px;
     max-width: 336px;
-    max-height: 18px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 0px) and (max-width: 880px) {
     .profile__text {
         line-height: 17px;
         font-size: 14px;
         max-width: 282px;
-        max-height: 14px;
         text-align: center;
     }
 }

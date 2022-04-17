@@ -3,6 +3,6 @@
     max-width: 246px;
     min-height: 23px;
     margin: 25px auto 0;
-    position: relative;
+    justify-content: space-between;
 }
 

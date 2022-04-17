@@ -5,19 +5,19 @@
     margin-top: 15px;
     background: transparent url(../../../images/Edit\ Button.svg) center no-repeat;
     border: none;
+    cursor: pointer;
 }
 
 .profile__edit-button:hover {
     opacity: 0.5;
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 0px) and (max-width: 880px) {
     .profile__edit-button {
         margin-left: 10px;
         margin-top: 5px;
         width: 18px;
         height: 18px;
-        background: transparent url(../../../images/EditButtonMobile.svg) center no-repeat;
 
     }
 }
