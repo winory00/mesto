@@ -1,5 +1,6 @@
 .profile__header {
     display: flex;
+
 }
 
 @media (min-width: 0px) and (max-width: 880px) {

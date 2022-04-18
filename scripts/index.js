@@ -2,12 +2,15 @@ const editButtonLink = document.querySelector('.profile__edit-button');
 const modalWindow = document.querySelector('.popup');
 const modalCloseBtn = modalWindow.querySelector('.popup__close');
 let formElement = document.querySelector('.popup__form');
-let nameInput = document.querySelector('[name="form__name"]');
-let jobInput = document.querySelector('[name="form__description"]');
-const textInput = document.querySelector('input');
+let nameInput = document.querySelector('.profile__title');
+let jobInput = document.querySelector('.profile__text');
+const formName = document.querySelector('[name="form__name"]');
+const formJob = document.querySelector('[name="form__description"]');
 
 function toggleModalWindow() {
     modalWindow.classList.toggle('popup_is-active');
+    formName.value = nameInput.textContent;
+    formJob.value = jobInput.textContent;
 }
 
 
@@ -24,17 +27,14 @@ function onOverlayClick(event) {
 function formSubmitHandler(evt) {
     evt.preventDefault();
 
-    nameInput.value = nameInput.value.textContent;
-    jobInput.value = jobInput.value.textContent;
+    nameInput.textContent = formName.value;
+    jobInput.textContent = formJob.value;
 
 }
 
 modalWindow.addEventListener('click', onOverlayClick);
 editButtonLink.addEventListener('click', toggleModalWindow);
 modalCloseBtn.addEventListener('click', toggleModalWindow);
-
-
-
 
 formElement.addEventListener('submit', formSubmitHandler);
 
