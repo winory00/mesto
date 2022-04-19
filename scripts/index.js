@@ -9,11 +9,14 @@ const formJob = document.querySelector('[name="form__description"]');
 
 function toggleModalWindow() {
     modalWindow.classList.toggle('popup_is-active');
+
+}
+
+function openModalWindow() {
+    toggleModalWindow();
     formName.value = nameInput.textContent;
     formJob.value = jobInput.textContent;
 }
-
-
 
 function onOverlayClick(event) {
     console.log('event.target', event.target);
@@ -23,18 +26,15 @@ function onOverlayClick(event) {
     }
 }
 
-
 function formSubmitHandler(evt) {
     evt.preventDefault();
-
     nameInput.textContent = formName.value;
     jobInput.textContent = formJob.value;
-
+    toggleModalWindow();
 }
 
 modalWindow.addEventListener('click', onOverlayClick);
-editButtonLink.addEventListener('click', toggleModalWindow);
+editButtonLink.addEventListener('click', openModalWindow);
 modalCloseBtn.addEventListener('click', toggleModalWindow);
 
 formElement.addEventListener('submit', formSubmitHandler);
-
