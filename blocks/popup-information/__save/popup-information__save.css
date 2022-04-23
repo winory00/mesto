@@ -1,4 +1,4 @@
-.popup__save {
+.popup-information__save {
     width: 358px;
     height: 50px;
     background: url(../../../images/save2.svg);
@@ -13,12 +13,12 @@
     color: white;
 }
 
-.popup__save:hover {
+.popup-information__save:hover {
     opacity: 0.8;
 }
 
 @media (min-width: 0px) and (max-width: 880px) {
-    .popup__save {
+    .popup-information__save {
         width: 238px;
         height: 46px;
         font-size: 14px;

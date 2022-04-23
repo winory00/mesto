@@ -30,9 +30,10 @@
             </button>
         </section>
         <div class="elements">
-            <div class="element">
+            <!-- <div class="element">
                 <img class="element__image" src="./images/victor-malyushev-LJdhcQugG10-unsplashКарелия.jpg"
                     alt="Карелия">
+                <button class="element__delete" type="button"></button>
                 <div class="element__description">
                     <h2 class="element__title">Карелия</h2>
                     <button class="element__like" type="button"></button>
@@ -41,6 +42,7 @@
             </div>
             <div class="element">
                 <img class="element__image" src="./images/vadim-artyukhin-Z6LAUjhLzJQ-unsplashБайкал.jpg" alt="Байкал">
+                <button class="element__delete" type="button"></button>
                 <div class="element__description">
                     <h2 class="element__title">Байкал</h2>
                     <button class="element__like" type="button"></button>
@@ -49,6 +51,7 @@
             </div>
             <div class="element">
                 <img class="element__image" src="./images/nick-night-WxoSM-9oyc8-unsplashАлтай.jpg" alt="Алтай">
+                <button class="element__delete" type="button"></button>
                 <div class="element__description">
                     <h2 class="element__title">Алтай</h2>
                     <button class="element__like" type="button"></button>
@@ -58,6 +61,7 @@
             <div class="element">
                 <img class="element__image" src="./images/kirill-pershin-1088404Карачаево.png"
                     alt="Карачаево-Черкесcия">
+                <button class="element__delete" type="button"></button>
                 <div class="element__description">
                     <h2 class="element__title">Карачаево-Черкесcия</h2>
                     <button class="element__like" type="button"></button>
@@ -66,6 +70,7 @@
             </div>
             <div class="element">
                 <img class="element__image" src="./images/kirill-pershin-1404681-unsplashЭльбрус.png" alt="Эльбрус">
+                <button class="element__delete" type="button"></button>
                 <div class="element__description">
                     <h2 class="element__title">Эльбрус</h2>
                     <button class="element__like" type="button"></button>
@@ -74,31 +79,55 @@
             </div>
             <div class="element">
                 <img class="element__image" src="./images/kirill-pershin-1556355-unsplashДомбай.png" alt="Домбай">
+                <button class="element__delete" type="button"></button>
                 <div class="element__description">
                     <h2 class="element__title">Домбай</h2>
                     <button class="element__like" type="button"></button>
                 </div>
-            </div>
+            </div> -->
         </div>
     </main>
     <footer class="footer">
         <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
-        <div class="popup__content">
-            <button class="popup__close" type="button"></button>
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form" name="popupform">
-                <input class="popup__field " type="text" placeholder="Имя" name="form__name">
-                <input class="popup__field " type="text" placeholder="Работа" name="form__description">
-                <button class="popup__save" type="submit">Сохранить
+    <div class="popup-information">
+        <div class="popup-information__content">
+            <button class="popup-information__close" type="button"></button>
+            <h2 class="popup-information__title">Редактировать профиль</h2>
+            <form class="popup-information__form" name="popup-informationform">
+                <input class="popup-information__field " type="text" placeholder="Имя" name="form__name">
+                <input class="popup-information__field " type="text" placeholder="Работа" name="form__description">
+                <button class="popup-information__save" type="submit">Сохранить
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup-cards">
+        <div class="popup-cards__content">
+            <button class="popup-cards__close" type="button"></button>
+            <h2 class="popup-cards__title">Новое место</h2>
+            <form class="popup-cards__form" name="popup-cardsform">
+                <input class="popup-cards__field " type="text" placeholder="Названия" name="form__title">
+                <input class="popup-cards__field " type="text" placeholder="Ссылка на картинку" name="form__link">
+                <button class="popup-cards__save" type="submit">Создать
                 </button>
             </form>
 
-
-
         </div>
     </div>
+
+    <template class="element__form">
+        <div class="element">
+            <img class="element__image">
+            <button class="element__delete" type="button"></button>
+            <div class="element__description">
+                <h2 class="element__title"></h2>
+                <button class="element__like" type="button"></button>
+            </div>
+
+        </div>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 

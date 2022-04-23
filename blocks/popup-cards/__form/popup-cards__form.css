@@ -1,0 +1,10 @@
+.popup-cards__form {
+    max-width: 358px;
+    color: black;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
