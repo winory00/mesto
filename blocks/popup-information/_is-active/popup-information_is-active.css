@@ -1,4 +1,5 @@
 .popup-information_is-active {
-display: flex;
-
+    display: flex;
+    visibility: visible;
+    opacity: 1;
 }

@@ -88,7 +88,7 @@ function onOverlayClickAdd(event) {
     console.log('event.target', event.target);
     console.log('event.currentTarget', event.currentTarget);
     if (event.target === event.currentTarget) {
-        toggleOpenElementImage();
+        closeElementImage();
  }}
 
 function formSubmitHandler(evt) {
@@ -187,12 +187,12 @@ for (let i = 0; i < openElementImage.length; i++) {
         textImage.textContent = text.textContent; 
         modalImageOpen.classList.toggle('popup-photo_is-active');
     })
-
-    function closeElementImage() {
-        modalImageOpen.classList.toggle('popup-photo_is-active');
-    }
 }
-// modalImage.addEventListener('click', onOverlayClickImage);
+function closeElementImage() {
+    modalImageOpen.classList.toggle('popup-photo_is-active');
+}
+modalImageOpen.addEventListener('click', onOverlayClickImage);
+
 modalImageOpen.addEventListener('click', openElementImage);
 closeBtnImage.addEventListener('click', closeElementImage);
 
