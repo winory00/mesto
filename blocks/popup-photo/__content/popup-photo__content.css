@@ -1,0 +1,13 @@
+.popup-photo__content {
+    max-width: 100%;
+    max-height: 100%;
+    background-color: transparent;
+    color: white;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+
+}

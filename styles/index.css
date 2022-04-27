@@ -40,3 +40,9 @@
 @import url(../blocks/popup-cards/__field/popup-cards__field.css);
 @import url(../blocks/popup-cards/__content/popup-cards__content.css);
 @import url(../blocks/popup-cards/__close/popup-cards__close.css);
+@import url(../blocks/popup-photo/popup-photo.css);
+@import url(../blocks/popup-photo/__close/popup-photo__close.css);
+@import url(../blocks/popup-photo/__content/popup-photo__content.css);
+@import url(../blocks/popup-photo/__description/popup-photo__description.css);
+@import url(../blocks/popup-photo/__image/popup-photo__image.css);
+@import url(../blocks/popup-photo/_is-active/popup-photo_is-active.css);
