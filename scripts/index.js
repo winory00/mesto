@@ -1,29 +1,3 @@
-const initialCards = [
-    {
-        name: 'Карелия',
-        link: './images/victor-malyushev-LJdhcQugG10-unsplashКарелия.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: './images/vadim-artyukhin-Z6LAUjhLzJQ-unsplashБайкал.jpg'
-    },
-    {
-        name: 'Алтай',
-        link: './images/nick-night-WxoSM-9oyc8-unsplashАлтай.jpg'
-    },
-    {
-        name: 'Карачаево-Черкесcия',
-        link: './images/kirill-pershin-1088404Карачаево.png'
-    },
-    {
-        name: 'Эльбрус',
-        link: './images/kirill-pershin-1404681-unsplashЭльбрус.png'
-    },
-    {
-        name: 'Домбай',
-        link: './images/kirill-pershin-1556355-unsplashДомбай.png'
-    }
-];
 
 const cardsContainer = document.querySelector('.elements');
 const template = document.querySelector('.element__form');
@@ -37,105 +11,70 @@ const modalCloseBtn = modalWindow.querySelector('.popup-information__close');
 const addCloseBtn = modalWindowAdd.querySelector('.popup-cards__close');
 
 
-let formElement = document.querySelector('.popup-information__form');
-let formElementAdd = document.querySelector('.popup-cards__form');
+const formElement = document.querySelector('.popup-information__form');
+const formElementAdd = document.querySelector('.popup-cards__form');
 
-let nameInput = document.querySelector('.profile__title');
-let jobInput = document.querySelector('.profile__text');
+const nameInput = document.querySelector('.profile__title');
+const jobInput = document.querySelector('.profile__text');
 const formName = document.querySelector('[name="form__name"]');
 const formJob = document.querySelector('[name="form__description"]');
 
 const saveBtn = document.querySelector('.popup-cards__save');
 
+const modalImageOpen = document.querySelector('.popup-photo');
+const imagePopup = document.querySelector('.popup-photo__image');
+const textImage = document.querySelector('.popup-photo__description');
+const closeBtnImage = document.querySelector('.popup-photo__close');
 
-
-
-
-function toggleModalWindow() {
-    modalWindow.classList.toggle('popup-information_is-active');
-
+function openWindow(Window) {
+    Window.classList.add('popup_is-active');
 }
-
-function toggleModalWindowAdd() {
-    modalWindowAdd.classList.toggle('popup-cards_is-active');
-}
-
 function openModalWindow() {
-    toggleModalWindow();
+    openWindow(modalWindow);
     formName.value = nameInput.textContent;
     formJob.value = jobInput.textContent;
 }
 function openModalWindowAdd() {
-    toggleModalWindowAdd();
-
+    openWindow(modalWindowAdd);
 }
 
-function onOverlayClick(event) {
-    console.log('event.target', event.target);
-    console.log('event.currentTarget', event.currentTarget);
-    if (event.target === event.currentTarget) {
-        toggleModalWindow();
-    }
+function closeWindow(Window) {
+    Window.classList.remove('popup_is-active');
 }
-function onOverlayClickAdd(event) {
-    console.log('event.target', event.target);
-    console.log('event.currentTarget', event.currentTarget);
-    if (event.target === event.currentTarget) {
-        toggleModalWindowAdd();
-    }
-}
- function onOverlayClickImage(event) {
-    console.log('event.target', event.target);
-    console.log('event.currentTarget', event.currentTarget);
-    if (event.target === event.currentTarget) {
-        closeElementImage();
- }}
 
-function formSubmitHandler(evt) {
+function closeModalWindow() {
+    closeWindow(modalWindow);
+}
+
+function closeModalWindowAdd() {
+    closeWindow(modalWindowAdd);
+}
+
+function closeElementImage() {
+    closeWindow(modalImageOpen);
+}
+
+function handleProfileFormSubmit(evt) {
     evt.preventDefault();
     nameInput.textContent = formName.value;
     jobInput.textContent = formJob.value;
-    toggleModalWindow();
+    closeWindow(modalWindow);
 }
 
-function formSubmitAdd(evt) {
+function handleAddCardFormSubmit(evt) {
     evt.preventDefault();
-    toggleModalWindowAdd();
-}
-function handleAddCard() {
-    const inputValue = document.querySelector('[name="form__title"]').value;
-    const photoValue = document.querySelector('[name="form__link"]').value;
-    const newObject = { name: inputValue, link: photoValue };
-    console.log(newObject);
+    const inputValue = document.querySelector('[name="form__title"]');
+    const photoValue = document.querySelector('[name="form__link"]');
+    const newObject = { name: inputValue.value, link: photoValue.value };
     const newCardName = getElement(newObject);
     cardsContainer.prepend(newCardName);
-
+    closeWindow(modalWindowAdd);
+    evt.target.reset(handleAddCardFormSubmit);
 }
 
-
-
-saveBtn.addEventListener('click', handleAddCard);
-modalWindow.addEventListener('click', onOverlayClick);
-modalWindowAdd.addEventListener('click', onOverlayClickAdd);
-
-editButtonLink.addEventListener('click', openModalWindow);
-addButtonLink.addEventListener('click', openModalWindowAdd);
-
-modalCloseBtn.addEventListener('click', toggleModalWindow);
-addCloseBtn.addEventListener('click', toggleModalWindowAdd);
-
-formElement.addEventListener('submit', formSubmitHandler);
-formElementAdd.addEventListener('submit', formSubmitAdd);
-
-
-
-
-
-
-
 function render() {
-    const html = initialCards.map(getElement);
-    cardsContainer.append(...html);
+    const cards = initialCards.map(getElement);
+    cardsContainer.append(...cards);
 
 }
 
@@ -148,7 +87,37 @@ function getElement(item) {
     const link = getElementTemplate.querySelector('.element__image');
     link.src = item.link;
     removeBtn.addEventListener('click', removeElement);
+
+    const LikeButtons = getElementTemplate.querySelectorAll('.element__like');
+    for (let i = 0; i < LikeButtons.length; i++) {
+
+        let ActiveButton = LikeButtons[i];
+
+        ActiveButton.addEventListener('click', function () {
+
+            ActiveButton.classList.toggle('element__like_is-active');
+
+        })
+    }
+
+    const openElementImage = getElementTemplate.querySelectorAll('.element');
+    for (let i = 0; i < openElementImage.length; i++) {
+        let Element = openElementImage[i];
+        Element.querySelector('.element__image').addEventListener('click', function () {
+            image = Element.querySelector('.element__image');
+            imagePopup.src = image.src;
+            text = Element.querySelector('.element__title');
+            textImage.textContent = text.textContent;
+
+            openWindow(modalImageOpen);
+            modalImageOpen.addEventListener('click', openElementImage);
+        })
+
+    }
+
     return getElementTemplate;
+
+
 }
 render();
 
@@ -157,42 +126,16 @@ function removeElement(evt) {
     element.remove();
 
 }
-const LikeButtons = cardsContainer.querySelectorAll('.element__like');
-for (let i = 0; i < LikeButtons.length; i++) {
-
-    let ActiveButton = LikeButtons[i];
-
-    ActiveButton.addEventListener('click', function () {
-
-        ActiveButton.classList.toggle('element__like_is-active');
-
-    })
-}
 
 
-const modalImageOpen = document.querySelector('.popup-photo');
-const imagePopup = document.querySelector('.popup-photo__image');
-const textImage = document.querySelector('.popup-photo__description');
-const closeBtnImage = document.querySelector('.popup-photo__close');
 
+editButtonLink.addEventListener('click', openModalWindow);
+addButtonLink.addEventListener('click', openModalWindowAdd);
 
-const openElementImage = cardsContainer.querySelectorAll('.element')
-for (let i = 0; i < openElementImage.length; i++) {
-    let Element = openElementImage[i];
-    Element.addEventListener('click', function() {
-        
-        image = Element.querySelector('.element__image');
-        imagePopup.src = image.src; 
-        text = Element.querySelector('.element__title');
-        textImage.textContent = text.textContent; 
-        modalImageOpen.classList.toggle('popup-photo_is-active');
-    })
-}
-function closeElementImage() {
-    modalImageOpen.classList.toggle('popup-photo_is-active');
-}
-modalImageOpen.addEventListener('click', onOverlayClickImage);
+modalCloseBtn.addEventListener('click', closeModalWindow);
+addCloseBtn.addEventListener('click', closeModalWindowAdd);
 
-modalImageOpen.addEventListener('click', openElementImage);
+formElement.addEventListener('submit', handleProfileFormSubmit);
+formElementAdd.addEventListener('submit', handleAddCardFormSubmit);
 closeBtnImage.addEventListener('click', closeElementImage);
 
