@@ -1,7 +1,6 @@
 .element__image {
     height: 282px;
     width: 282px;
-    background-size: contain;
     overflow: hidden;
     object-fit: cover;
     z-index: 1;
