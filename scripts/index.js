@@ -26,27 +26,27 @@ const imagePopup = document.querySelector('.popup-photo__image');
 const textImage = document.querySelector('.popup-photo__description');
 const closeBtnImage = document.querySelector('.popup-photo__close');
 
-function openWindow(Window) {
-    Window.classList.add('popup_is-active');
+function openWindow(window) {
+    window.classList.add('popup_is-active');
 }
-function openModalWindow() {
+function openModalProfile() {
     openWindow(modalWindow);
     formName.value = nameInput.textContent;
     formJob.value = jobInput.textContent;
 }
-function openModalWindowAdd() {
+function openModalCard() {
     openWindow(modalWindowAdd);
 }
 
-function closeWindow(Window) {
-    Window.classList.remove('popup_is-active');
+function closeWindow(window) {
+    window.classList.remove('popup_is-active');
 }
 
-function closeModalWindow() {
+function closeModalProfile() {
     closeWindow(modalWindow);
 }
 
-function closeModalWindowAdd() {
+function closeModalCardAdd() {
     closeWindow(modalWindowAdd);
 }
 
@@ -88,33 +88,22 @@ function getElement(item) {
     link.src = item.link;
     removeBtn.addEventListener('click', removeElement);
 
-    const LikeButtons = getElementTemplate.querySelectorAll('.element__like');
-    for (let i = 0; i < LikeButtons.length; i++) {
-
-        let ActiveButton = LikeButtons[i];
-
-        ActiveButton.addEventListener('click', function () {
-
-            ActiveButton.classList.toggle('element__like_is-active');
-
-        })
+    const likeButton= getElementTemplate.querySelector('.element__like');
+    likeButton.addEventListener('click', handleLikeCard);
+    function handleLikeCard() {
+        likeButton.classList.toggle('element__like_is-active');
     }
 
-    const openElementImage = getElementTemplate.querySelectorAll('.element');
-    for (let i = 0; i < openElementImage.length; i++) {
-        let Element = openElementImage[i];
-        Element.querySelector('.element__image').addEventListener('click', function () {
-            image = Element.querySelector('.element__image');
-            imagePopup.src = image.src;
-            text = Element.querySelector('.element__title');
-            textImage.textContent = text.textContent;
+     const openElementImage = getElementTemplate.querySelector('.element');
+     openElementImage.querySelector('.element__image').addEventListener('click', handleOpenImage);
+     function handleOpenImage() {
 
-            openWindow(modalImageOpen);
-            modalImageOpen.addEventListener('click', openElementImage);
-        })
-
-    }
-
+                imagePopup.src = item.link;
+                textImage.textContent = item.name;
+                imagePopup.alt = item.name;
+                openWindow(modalImageOpen);
+                modalImageOpen.addEventListener('click', openElementImage);
+     }
     return getElementTemplate;
 
 
@@ -129,11 +118,11 @@ function removeElement(evt) {
 
 
 
-editButtonLink.addEventListener('click', openModalWindow);
-addButtonLink.addEventListener('click', openModalWindowAdd);
+editButtonLink.addEventListener('click', openModalProfile);
+addButtonLink.addEventListener('click', openModalCard);
 
-modalCloseBtn.addEventListener('click', closeModalWindow);
-addCloseBtn.addEventListener('click', closeModalWindowAdd);
+modalCloseBtn.addEventListener('click', closeModalProfile);
+addCloseBtn.addEventListener('click', closeModalCardAdd);
 
 formElement.addEventListener('submit', handleProfileFormSubmit);
 formElementAdd.addEventListener('submit', handleAddCardFormSubmit);
