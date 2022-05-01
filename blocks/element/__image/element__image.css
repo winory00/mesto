@@ -1,6 +1,7 @@
 .element__image {
     height: 282px;
     width: 282px;
+    background-size: contain;
     overflow: hidden;
     object-fit: cover;
     z-index: 1;
@@ -8,4 +9,5 @@
     border-top-left-radius: 5%;
     border-top-right-radius: 5%;
     cursor: pointer;
+    
 }

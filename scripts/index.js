@@ -83,9 +83,12 @@ function getElement(item) {
     const getElementTemplate = template.content.cloneNode(true);
     const name = getElementTemplate.querySelector('.element__title');
     const removeBtn = getElementTemplate.querySelector('.element__delete');
+    const photo = getElementTemplate.querySelector('.element__image');
+    
     name.textContent = item.name;
-    const link = getElementTemplate.querySelector('.element__image');
-    link.src = item.link;
+    photo.src = item.link;
+    photo.alt = item.name;
+    
     removeBtn.addEventListener('click', removeElement);
 
     const likeButton= getElementTemplate.querySelector('.element__like');
@@ -97,12 +100,12 @@ function getElement(item) {
      const openElementImage = getElementTemplate.querySelector('.element');
      openElementImage.querySelector('.element__image').addEventListener('click', handleOpenImage);
      function handleOpenImage() {
-
+                imagePopup.alt = item.name;
                 imagePopup.src = item.link;
                 textImage.textContent = item.name;
-                imagePopup.alt = item.name;
+
                 openWindow(modalImageOpen);
-                modalImageOpen.addEventListener('click', openElementImage);
+               
      }
     return getElementTemplate;
 
