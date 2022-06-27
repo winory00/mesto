@@ -84,29 +84,29 @@ function getElement(item) {
     const name = getElementTemplate.querySelector('.element__title');
     const removeBtn = getElementTemplate.querySelector('.element__delete');
     const photo = getElementTemplate.querySelector('.element__image');
-    
+
     name.textContent = item.name;
     photo.src = item.link;
     photo.alt = item.name;
-    
+
     removeBtn.addEventListener('click', removeElement);
 
-    const likeButton= getElementTemplate.querySelector('.element__like');
+    const likeButton = getElementTemplate.querySelector('.element__like');
     likeButton.addEventListener('click', handleLikeCard);
     function handleLikeCard() {
         likeButton.classList.toggle('element__like_is-active');
     }
 
-     const openElementImage = getElementTemplate.querySelector('.element');
-     openElementImage.querySelector('.element__image').addEventListener('click', handleOpenImage);
-     function handleOpenImage() {
-                imagePopup.alt = item.name;
-                imagePopup.src = item.link;
-                textImage.textContent = item.name;
+    const openElementImage = getElementTemplate.querySelector('.element');
+    openElementImage.querySelector('.element__image').addEventListener('click', handleOpenImage);
+    function handleOpenImage() {
+        imagePopup.alt = item.name;
+        imagePopup.src = item.link;
+        textImage.textContent = item.name;
 
-                openWindow(modalImageOpen);
-               
-     }
+        openWindow(modalImageOpen);
+
+    }
     return getElementTemplate;
 
 
@@ -118,8 +118,58 @@ function removeElement(evt) {
     element.remove();
 
 }
+function enableValidation(config) {
+    const form = document.querySelector(config.formSelector);
+    const inputs = form.querySelectorAll(config.inputSelector);
+    form.addEventListener('submit', (event) => handleFormSubmit(event, form));
+    //  form.addEventListener('change', (event) => handleFormInput(event));
+    inputs.forEach((element) => {
+        element.addEventListener('input', (event) => handleFormInput(event, form, config));
+    })
+    toggleButton(form, config);
 
+}
+//  enableValidation('.popup-cards__form'); 
 
+function handleFormSubmit(event, form) {
+    event.preventDefault();
+
+    if (form.checkValidity()) {
+        alert('Форма валидна');
+    } else {
+        alert('Форма не валидна');
+    }
+
+}
+
+function handleFormInput(event, form, config) {
+    const input = event.target;
+    const errorNode = document.querySelector(`#${input.id}-error`);
+    if (input.validity.valid) {
+        errorNode.textContent = '';
+    } else {
+
+        errorNode.textContent = input.validationMessage;
+    }
+    toggleButton(form, config);
+};
+
+function toggleButton(form, config) {
+    const button = document.querySelector(config.buttonSelector);
+    button.disabled = !form.checkValidity();
+    button.classList.toggle('popup-cards__save_disabled', !form.checkValidity());
+};
+
+// enableValidation({
+//     formSelector: ['.popup-cards__form', '.popup-information__form'],
+//     inputSelector: ['.popup-cards__field', '.popup-information__field'],
+//     buttonSelector: ['.popup-cards__save', '.popup-information__save'],
+// })
+enableValidation({
+    formSelector: '.popup-cards__form', 
+    inputSelector: '.popup-cards__field', 
+    buttonSelector: '.popup-cards__save', 
+})
 
 editButtonLink.addEventListener('click', openModalProfile);
 addButtonLink.addEventListener('click', openModalCard);

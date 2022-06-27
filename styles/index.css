@@ -44,3 +44,4 @@
 @import url(../blocks/popup-photo/__description/popup-photo__description.css);
 @import url(../blocks/popup-photo/__image/popup-photo__image.css);
 @import url(../blocks/popup/_is-active/popup_is-active.css);
+@import url(../blocks/popup-cards/__save/popup-cards__save_disabled.css);

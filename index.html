@@ -39,9 +39,27 @@
         <div class="popup-information__content">
             <button class="popup-information__close" type="button"></button>
             <h2 class="popup-information__title">Редактировать профиль</h2>
-            <form class="popup-information__form" name="popup-informationform">
-                <input class="popup-information__field " type="text" placeholder="Имя" name="form__name">
-                <input class="popup-information__field " type="text" placeholder="Работа" name="form__description">
+            <form class="popup-information__form" name="popup-informationform" novalidate>
+                <input 
+                class="popup-information__field " 
+                type="text" placeholder="Имя" 
+                name="form__name" 
+                required 
+                minlength="2" 
+                maxlength="40"
+                id="name-input">
+                <span class="error" id="name-input-error"></span>
+
+                <input 
+                class="popup-information__field " 
+                type="text" 
+                placeholder="О себе" 
+                name="form__description" 
+                required 
+                minlength="2" 
+                maxlength="200"
+                id="description-input">
+                <span class="error" id="description-input-error"></span>
                 <button class="popup-information__save" type="submit">Сохранить
                 </button>
             </form>
@@ -52,13 +70,30 @@
         <div class="popup-cards__content">
             <button class="popup-cards__close" type="button"></button>
             <h2 class="popup-cards__title">Новое место</h2>
-            <form class="popup-cards__form" name="popup-cardsform">
-                <input class="popup-cards__field " type="text" placeholder="Названия" name="form__title">
-                <input class="popup-cards__field " type="text" placeholder="Ссылка на картинку" name="form__link">
+            <form class="popup-cards__form" name="popup-cardsform" novalidate>
+                <input 
+                class="popup-cards__field " 
+                type="text" 
+                placeholder="Название" 
+                name="form__title" 
+                id="title-input"
+                minlength="2" 
+                maxlength="40"
+                required>
+                <span class="error" id="title-input-error"></span>
+
+                <input 
+                class="popup-cards__field " 
+                type="url" 
+                placeholder="Ссылка на картинку" 
+                id="link-input"
+                name="form__link" 
+                required>
                 <button class="popup-cards__save" type="submit">Создать
                 </button>
+                <span class="error" id="link-input-error"></span>
             </form>
-    
+
 
         </div>
     </div>
