@@ -1,0 +1,10 @@
+.element__image {
+    height: 282px;
+    width: 282px;
+    overflow: hidden;
+    object-fit: cover;
+    z-index: 1;
+    position: relative;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+}

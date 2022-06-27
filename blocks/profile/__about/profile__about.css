@@ -1,0 +1,10 @@
+.profile__about {
+    display: flex;
+}
+
+@media (min-width: 0px) and (max-width: 880px) {
+    .profile__about {
+        flex-direction: column;
+        max-width: 282px;
+    }
+}
