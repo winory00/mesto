@@ -8,18 +8,18 @@ const modalWindow = document.querySelector('.popup-information');
 const modalWindowAdd = document.querySelector('.popup-cards');
 
 const modalCloseBtn = modalWindow.querySelector('.popup-information__close');
-const addCloseBtn = modalWindowAdd.querySelector('.popup-cards__close');
+const closeCardsButton = modalWindowAdd.querySelector('.popup-cards__close');
 
 
-const formElement = document.querySelector('.popup-information__form');
-const formElementAdd = document.querySelector('.popup-cards__form');
+const formElement = document.querySelector('[name="popup-informationform"]');
+const formElementAdd = document.querySelector('[name="popup-cardsform"]');
 
 const nameInput = document.querySelector('.profile__title');
 const jobInput = document.querySelector('.profile__text');
 const formName = document.querySelector('[name="form__name"]');
 const formJob = document.querySelector('[name="form__description"]');
 
-const saveBtn = document.querySelector('.popup-cards__save');
+const saveBtn = document.querySelector('.popup__button');
 
 const modalImageOpen = document.querySelector('.popup-photo');
 const imagePopup = document.querySelector('.popup-photo__image');
@@ -29,6 +29,14 @@ const closeBtnImage = document.querySelector('.popup-photo__close');
 
 function openWindow(window) {
     window.classList.add('popup_is-active');
+    enableValidation({
+        formSelector: '.popup__form',
+        inputSelector: '.popup__input',
+        submitButtonSelector: '.popup__button',
+        inactiveButtonClass: 'popup__button_disabled',
+        inputErrorClass: 'popup__input_type_error',
+        errorClass: 'popup__error_visible'
+      }); 
 }
 function openModalProfile() {
     openWindow(modalWindow);
@@ -120,40 +128,15 @@ function removeElement(evt) {
     element.remove();
 
 }
-function enableValidation(config) {
-    const form = document.querySelector(config.formSelector);
-    const inputs = form.querySelectorAll(config.inputSelector);
-    form.addEventListener('submit', (event) => handleFormSubmit(event, form));
-    inputs.forEach((element) => {
-        element.addEventListener('input', (event) => handleFormInput(event, form, config));
-    })
-    toggleButton(form, config);
 
-}
 
 function handleFormSubmit(event, form) {
     event.preventDefault();
 }
 
-function handleFormInput(event, form, config) {
-    const input = event.target;
-    const errorNode = document.querySelector(`#${input.id}-error`);
-    if (input.validity.valid) {
-        errorNode.textContent = '';
-        errorNode.classList.remove('error-visible');
-    } else {
-        errorNode.textContent = input.validationMessage;
-        errorNode.classList.add('error-visible');
-    }
-    toggleButton(form, config);
 
-};
 
-function toggleButton(form, config) {
-    const button = document.querySelector(config.buttonSelector);
-    button.disabled = !form.checkValidity();
-    button.classList.toggle('popup-cards__save_disabled', !form.checkValidity());
-};
+
 
 function onOverlayClick(event) {
 
@@ -179,7 +162,7 @@ editButtonLink.addEventListener('click', openModalProfile);
 addButtonLink.addEventListener('click', openModalCard);
 
 modalCloseBtn.addEventListener('click', closeModalProfile);
-addCloseBtn.addEventListener('click', closeModalCardAdd);
+closeCardsButton.addEventListener('click', closeModalCardAdd);
 
 
 formElement.addEventListener('submit', handleProfileFormSubmit);
