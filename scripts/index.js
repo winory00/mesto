@@ -26,6 +26,7 @@ const imagePopup = document.querySelector('.popup-photo__image');
 const textImage = document.querySelector('.popup-photo__description');
 const closeBtnImage = document.querySelector('.popup-photo__close');
 
+
 function openWindow(window) {
     window.classList.add('popup_is-active');
 }
@@ -40,6 +41,7 @@ function openModalCard() {
 
 function closeWindow(window) {
     window.classList.remove('popup_is-active');
+ 
 }
 
 function closeModalProfile() {
@@ -122,24 +124,15 @@ function enableValidation(config) {
     const form = document.querySelector(config.formSelector);
     const inputs = form.querySelectorAll(config.inputSelector);
     form.addEventListener('submit', (event) => handleFormSubmit(event, form));
-    //  form.addEventListener('change', (event) => handleFormInput(event));
     inputs.forEach((element) => {
         element.addEventListener('input', (event) => handleFormInput(event, form, config));
     })
     toggleButton(form, config);
 
 }
-//  enableValidation('.popup-cards__form'); 
 
 function handleFormSubmit(event, form) {
     event.preventDefault();
-
-    if (form.checkValidity()) {
-        alert('Форма валидна');
-    } else {
-        alert('Форма не валидна');
-    }
-
 }
 
 function handleFormInput(event, form, config) {
@@ -147,11 +140,13 @@ function handleFormInput(event, form, config) {
     const errorNode = document.querySelector(`#${input.id}-error`);
     if (input.validity.valid) {
         errorNode.textContent = '';
+        errorNode.classList.remove('error-visible');
     } else {
-
         errorNode.textContent = input.validationMessage;
+        errorNode.classList.add('error-visible');
     }
     toggleButton(form, config);
+
 };
 
 function toggleButton(form, config) {
@@ -160,16 +155,25 @@ function toggleButton(form, config) {
     button.classList.toggle('popup-cards__save_disabled', !form.checkValidity());
 };
 
-// enableValidation({
-//     formSelector: ['.popup-cards__form', '.popup-information__form'],
-//     inputSelector: ['.popup-cards__field', '.popup-information__field'],
-//     buttonSelector: ['.popup-cards__save', '.popup-information__save'],
-// })
-enableValidation({
-    formSelector: '.popup-cards__form', 
-    inputSelector: '.popup-cards__field', 
-    buttonSelector: '.popup-cards__save', 
-})
+function onOverlayClick(event) {
+
+    console.log('event.target', event.target);
+
+    console.log('event.currentTarget', event.currentTarget);
+
+    if (event.target === event.currentTarget) {
+
+        closeWindow(modalWindow);
+        closeWindow(modalWindowAdd);
+        closeElementImage();
+
+    }
+};
+modalWindow.addEventListener('click', onOverlayClick);
+modalWindowAdd.addEventListener('click', onOverlayClick);
+modalImageOpen.addEventListener('click', onOverlayClick);
+
+
 
 editButtonLink.addEventListener('click', openModalProfile);
 addButtonLink.addEventListener('click', openModalCard);
@@ -177,7 +181,18 @@ addButtonLink.addEventListener('click', openModalCard);
 modalCloseBtn.addEventListener('click', closeModalProfile);
 addCloseBtn.addEventListener('click', closeModalCardAdd);
 
+
 formElement.addEventListener('submit', handleProfileFormSubmit);
 formElementAdd.addEventListener('submit', handleAddCardFormSubmit);
 closeBtnImage.addEventListener('click', closeElementImage);
+
+
+document.addEventListener('keydown', function (evt) {
+    if (evt.code === 'Escape') {
+        closeWindow(modalWindow);
+        closeWindow(modalWindowAdd);
+        closeElementImage();
+    }
+});
+
 
