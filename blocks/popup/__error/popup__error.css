@@ -1,4 +1,4 @@
-.popup__input_type_error {
+.popup__error {
     color: red;
     border-top: 1px red solid;
     padding: 0;
@@ -10,12 +10,12 @@
     visibility: hidden;
 }
 
-.popup__input_type_error:nth-of-type(2) {
+.popup__error:nth-of-type(2) {
     top: 90px;
 }
 
 @media (min-width: 0px) and (max-width: 880px) {
-    .popup__input_type_error {
+    .popup__error {
         width: 238px;
     }
 }

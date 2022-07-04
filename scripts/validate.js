@@ -19,6 +19,7 @@ function handleFormInput(event, form, config) {
             errorNode.classList.add('popup__error_visible');
         }
         toggleButton(form, config);
+
     });
 
 
@@ -29,10 +30,13 @@ function enableValidation(config) {
     forms.forEach((form) => {
         const inputs = form.querySelectorAll(config.inputSelector);
         form.addEventListener('submit', (event) => handleFormSubmit(event, form));
-        inputs.forEach((element) => {
-            element.addEventListener('input', (event) => handleFormInput(event, form, config));
+        inputs.forEach((input) => {
+            // console.log(input.value);
+            input.addEventListener('input', (event) => handleFormInput(event, form, config));
+            
         })
         toggleButton(form, config);
+        
 
     });
 

@@ -28,25 +28,16 @@ const closeBtnImage = document.querySelector('.popup-photo__close');
 
 
 
-function keydownEsc(event) {
-    if (event.code === 'Escape') {
-        console.log(window);
-        closeWindow(window);
 
-    }
-}
+
 function openModalProfile() {
-    openWindow(modalWindow);
+   
     formName.value = nameInput.textContent;
     formJob.value = jobInput.textContent;
+    openWindow(modalWindow);
 }
 function openModalCard() {
     openWindow(modalWindowAdd);
-}
-
-function closeWindow(window) {
-    window.classList.remove('popup_is-active');
-    document.removeEventListener('keydown', keydownEsc(window));
 }
 
 
@@ -62,15 +53,23 @@ function openWindow(window) {
         inputErrorClass: 'popup__input_type_error',
         errorClass: 'popup__error_visible'
     });
-    document.addEventListener('keydown', keydownEsc(window));
+    document.addEventListener('keydown', (event) => keydownEsc(event, window));
 }
-// function keydownEsc(evt) {
-//     if (evt.code === 'Escape') {
-//         console.log(window);
-//         closeWindow(window);
 
-//     }
-// }
+function closeWindow(window) {
+    
+    document.removeEventListener('keydown', (event) => keydownEsc(event, window));
+    
+    window.classList.remove('popup_is-active');
+    
+
+}
+
+function keydownEsc (event, window) {
+    if (event.code === 'Escape') {
+        closeWindow(window);
+    }
+}
 function closeModalProfile() {
     closeWindow(modalWindow);
 }
@@ -152,10 +151,6 @@ function removeElement(evt) {
 function handleFormSubmit(event, form) {
     event.preventDefault();
 }
-
-
-
-
 
 function onOverlayClick(event) {
 

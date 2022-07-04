@@ -43,11 +43,11 @@
                 <form class="popup__form" name="popup-informationform" novalidate>
                     <input class="popup__input" type="text" placeholder="Имя" name="form__name" required
                         minlength="2" maxlength="40" id="name-input">
-                    <span class="popup__input_type_error" id="name-input-error"></span>
+                    <span class="popup__error" id="name-input-error"></span>
 
                     <input class="popup__input" type="text" placeholder="О себе" name="form__description"
                         required minlength="2" maxlength="200" id="description-input">
-                    <span class="popup__input_type_error" id="description-input-error"></span>
+                    <span class="popup__error" id="description-input-error"></span>
                     <button class="popup__button" type="submit">Сохранить
                     </button>
                 </form>
@@ -63,11 +63,13 @@
                     <span>
                         <input class="popup__input" type="text" placeholder="Название" name="form__title"
                             id="title-input" minlength="2" maxlength="40" required>
-                        <span class="popup__input_type_error" id="title-input-error"></span>
+                        <span class="popup__error" id="title-input-error"></span>
                     </span>
+                    
                     <input class="popup__input" type="url" placeholder="Ссылка на картинку" id="link-input"
                         name="form__link" required>
-                    <span class="popup__input_type_error" id="link-input-error"></span>
+                    <span class="popup__error" id="link-input-error"></span>
+                
                     <button class="popup__button" type="submit">Создать
                     </button>
 
