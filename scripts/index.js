@@ -27,16 +27,13 @@ const textImage = document.querySelector('.popup-photo__description');
 const closeBtnImage = document.querySelector('.popup-photo__close');
 
 
-function openWindow(window) {
-    window.classList.add('popup_is-active');
-    enableValidation({
-        formSelector: '.popup__form',
-        inputSelector: '.popup__input',
-        submitButtonSelector: '.popup__button',
-        inactiveButtonClass: 'popup__button_disabled',
-        inputErrorClass: 'popup__input_type_error',
-        errorClass: 'popup__error_visible'
-      }); 
+
+function keydownEsc(event) {
+    if (event.code === 'Escape') {
+        console.log(window);
+        closeWindow(window);
+
+    }
 }
 function openModalProfile() {
     openWindow(modalWindow);
@@ -49,9 +46,31 @@ function openModalCard() {
 
 function closeWindow(window) {
     window.classList.remove('popup_is-active');
- 
+    document.removeEventListener('keydown', keydownEsc(window));
 }
 
+
+function openWindow(window) {
+    window.classList.add('popup_is-active');
+    // console.log(window);
+
+    enableValidation({
+        formSelector: '.popup__form',
+        inputSelector: '.popup__input',
+        submitButtonSelector: '.popup__button',
+        inactiveButtonClass: 'popup__button_disabled',
+        inputErrorClass: 'popup__input_type_error',
+        errorClass: 'popup__error_visible'
+    });
+    document.addEventListener('keydown', keydownEsc(window));
+}
+// function keydownEsc(evt) {
+//     if (evt.code === 'Escape') {
+//         console.log(window);
+//         closeWindow(window);
+
+//     }
+// }
 function closeModalProfile() {
     closeWindow(modalWindow);
 }
@@ -140,10 +159,6 @@ function handleFormSubmit(event, form) {
 
 function onOverlayClick(event) {
 
-    console.log('event.target', event.target);
-
-    console.log('event.currentTarget', event.currentTarget);
-
     if (event.target === event.currentTarget) {
 
         closeWindow(modalWindow);
@@ -170,12 +185,5 @@ formElementAdd.addEventListener('submit', handleAddCardFormSubmit);
 closeBtnImage.addEventListener('click', closeElementImage);
 
 
-document.addEventListener('keydown', function (evt) {
-    if (evt.code === 'Escape') {
-        closeWindow(modalWindow);
-        closeWindow(modalWindowAdd);
-        closeElementImage();
-    }
-});
 
 
