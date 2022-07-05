@@ -26,12 +26,8 @@ const imagePopup = document.querySelector('.popup-photo__image');
 const textImage = document.querySelector('.popup-photo__description');
 const closeBtnImage = document.querySelector('.popup-photo__close');
 
-
-
-
-
 function openModalProfile() {
-   
+
     formName.value = nameInput.textContent;
     formJob.value = jobInput.textContent;
     openWindow(modalWindow);
@@ -43,29 +39,17 @@ function openModalCard() {
 
 function openWindow(window) {
     window.classList.add('popup_is-active');
-    // console.log(window);
-
-    enableValidation({
-        formSelector: '.popup__form',
-        inputSelector: '.popup__input',
-        submitButtonSelector: '.popup__button',
-        inactiveButtonClass: 'popup__button_disabled',
-        inputErrorClass: 'popup__input_type_error',
-        errorClass: 'popup__error_visible'
-    });
     document.addEventListener('keydown', (event) => keydownEsc(event, window));
 }
 
 function closeWindow(window) {
-    
-    document.removeEventListener('keydown', (event) => keydownEsc(event, window));
-    
-    window.classList.remove('popup_is-active');
-    
 
+    document.removeEventListener('keydown', (event) => keydownEsc(event, window));
+    resetForm(window);
+    window.classList.remove('popup_is-active');
 }
 
-function keydownEsc (event, window) {
+function keydownEsc(event, window) {
     if (event.code === 'Escape') {
         closeWindow(window);
     }
@@ -162,19 +146,14 @@ function onOverlayClick(event) {
 
     }
 };
+
 modalWindow.addEventListener('click', onOverlayClick);
 modalWindowAdd.addEventListener('click', onOverlayClick);
 modalImageOpen.addEventListener('click', onOverlayClick);
-
-
-
 editButtonLink.addEventListener('click', openModalProfile);
 addButtonLink.addEventListener('click', openModalCard);
-
 modalCloseBtn.addEventListener('click', closeModalProfile);
 closeCardsButton.addEventListener('click', closeModalCardAdd);
-
-
 formElement.addEventListener('submit', handleProfileFormSubmit);
 formElementAdd.addEventListener('submit', handleAddCardFormSubmit);
 closeBtnImage.addEventListener('click', closeElementImage);
