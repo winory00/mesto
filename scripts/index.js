@@ -8,7 +8,7 @@ const modalWindow = document.querySelector('.popup-information');
 const modalWindowAdd = document.querySelector('.popup-cards');
 
 const modalCloseBtn = modalWindow.querySelector('.popup-information__close');
-const closeCardsButton = modalWindowAdd.querySelector('.popup-cards__close');
+const cardsButtonClose = modalWindowAdd.querySelector('.popup-cards__close');
 
 
 const formElement = document.querySelector('[name="popup-informationform"]');
@@ -24,15 +24,21 @@ const saveBtn = document.querySelector('.popup__button');
 const modalImageOpen = document.querySelector('.popup-photo');
 const imagePopup = document.querySelector('.popup-photo__image');
 const textImage = document.querySelector('.popup-photo__description');
-const closeBtnImage = document.querySelector('.popup-photo__close');
+const btnImageClose = document.querySelector('.popup-photo__close');
+const buttonSelectors = {
+    formSelector: '.popup__form',
+    submitButtonSelector: '.popup__button',
+};
 
 function openModalProfile() {
 
     formName.value = nameInput.textContent;
     formJob.value = jobInput.textContent;
+    toggleWindowButton(modalWindow, buttonSelectors);
     openWindow(modalWindow);
 }
 function openModalCard() {
+    toggleWindowButton(modalWindowAdd,buttonSelectors);
     openWindow(modalWindowAdd);
 }
 
@@ -153,10 +159,10 @@ modalImageOpen.addEventListener('click', onOverlayClick);
 editButtonLink.addEventListener('click', openModalProfile);
 addButtonLink.addEventListener('click', openModalCard);
 modalCloseBtn.addEventListener('click', closeModalProfile);
-closeCardsButton.addEventListener('click', closeModalCardAdd);
+cardsButtonClose.addEventListener('click', closeModalCardAdd);
 formElement.addEventListener('submit', handleProfileFormSubmit);
 formElementAdd.addEventListener('submit', handleAddCardFormSubmit);
-closeBtnImage.addEventListener('click', closeElementImage);
+btnImageClose.addEventListener('click', closeElementImage);
 
 
 
