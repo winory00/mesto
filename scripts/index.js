@@ -4,11 +4,11 @@ const template = document.querySelector('.element__form');
 const editButtonLink = document.querySelector('.profile__edit-button');
 const addButtonLink = document.querySelector('.profile__add-button');
 
-const modalWindow = document.querySelector('.popup-information');
-const modalWindowAdd = document.querySelector('.popup-cards');
+const modalWindow = document.querySelector('[name="popup-information"]');
+const modalWindowAdd = document.querySelector('[name="popup-cards"]');
 
-const modalCloseBtn = modalWindow.querySelector('.popup-information__close');
-const cardsButtonClose = modalWindowAdd.querySelector('.popup-cards__close');
+const modalCloseBtn = modalWindow.querySelector('[name="information__close-button"]');
+const cardsButtonClose = modalWindowAdd.querySelector('[name="popup-cards__close-button"]');
 
 
 const formElement = document.querySelector('[name="popup-informationform"]');
@@ -87,7 +87,7 @@ function handleAddCardFormSubmit(evt) {
     const newCardName = getElement(newObject);
     cardsContainer.prepend(newCardName);
     closeWindow(modalWindowAdd);
-    evt.target.reset(handleAddCardFormSubmit);
+    evt.target.reset();
 }
 
 function render() {

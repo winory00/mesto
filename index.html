@@ -36,10 +36,10 @@
         <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
     
-        <div class="popup-information">
-            <div class="popup-information__content">
-                <button class="popup-information__close" type="button"></button>
-                <h2 class="popup-information__title">Редактировать профиль</h2>
+        <div class="popup" name="popup-information">
+            <div class="popup__content">
+                <button class="popup__close-button" type="button" name="information__close-button"></button>
+                <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="popup__form" name="popup-informationform" novalidate>
                     <input class="popup__input" type="text" placeholder="Имя" name="form__name" required
                         minlength="2" maxlength="40" id="name-input">
@@ -55,10 +55,10 @@
         </div>
    
     
-        <div class="popup-cards">
-            <div class="popup-cards__content">
-                <button class="popup-cards__close" type="button"></button>
-                <h2 class="popup-cards__title">Новое место</h2>
+        <div class="popup" name="popup-cards">
+            <div class="popup__content">
+                <button class="popup__close-button" type="button" name="popup-cards__close-button"></button>
+                <h2 class="popup__title">Новое место</h2>
                 <form class="popup__form" name="popup-cardsform" novalidate>
                     <span>
                         <input class="popup__input" type="text" placeholder="Название" name="form__title"

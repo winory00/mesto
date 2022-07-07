@@ -1,4 +1,4 @@
-.popup-cards {
+.popup {
     font-family: "Inter", Arial, Helvetica, sans-serif;
     display: flex;
     align-items: center;
@@ -14,4 +14,3 @@
     opacity: 0;
     transition: opacity 0.3s linear;
 }
-
