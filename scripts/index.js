@@ -18,6 +18,8 @@ const nameInput = document.querySelector('.profile__title');
 const jobInput = document.querySelector('.profile__text');
 const formName = document.querySelector('[name="form__name"]');
 const formJob = document.querySelector('[name="form__description"]');
+const formTitle = document.querySelector('[name="form__title"]');
+const formLink = document.querySelector('[name="form__link"]');
 
 const buttonSave = document.querySelector('.popup__button');
 
@@ -28,26 +30,32 @@ const btnImageClose = document.querySelector('.popup-photo__close');
 const buttonSelectors = {
     formSelector: '.popup__form',
     submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
 };
 
 function openModalProfile() {
-  
+    resetForm();
     formName.value = nameInput.textContent;
     formJob.value = jobInput.textContent;
     toggleWindowButton(modalWindow, buttonSelectors);
     openWindow(modalWindow);
+    
 }
 function openModalCard() {
-    toggleWindowButton(modalWindowAdd,buttonSelectors);
+    resetForm();
+    formTitle.value = "";
+    formLink.value = " ";
+    toggleWindowButton(modalWindowAdd, buttonSelectors);
     openWindow(modalWindowAdd);
+
 }
 
 
 function openWindow(window) {
-    resetForm(window);
+
     window.classList.add('popup_is-active');
-    
     document.addEventListener('keydown', (event) => keydownEsc(event, window));
+
 }
 
 function closeWindow(window) {
@@ -154,10 +162,10 @@ function onOverlayClick(event) {
     }
 };
 
-function resetForm(window) {
-    const inputs = window.querySelectorAll('.popup__input');
+function resetForm() {
+    const inputs = document.querySelectorAll('.popup__input');
     inputs.forEach((input) => {
-        const errorNode = window.querySelector(`#${input.id}-error`);
+        const errorNode = document.querySelector(`#${input.id}-error`);
         if (errorNode.classList.contains('popup__error_visible')) {
             errorNode.classList.remove('popup__error_visible');
             input.value = '';

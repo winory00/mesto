@@ -35,31 +35,23 @@ function handleFormInput(event, form, config) {
     });
 };
 
-function toggleWindowButton(window, config) {
-    const form = window.querySelector(config.formSelector);
-    toggleButton(form, config);
-}
+// function toggleWindowButton(window, config) {
+//     const form = window.querySelector(config.formSelector);
+//     toggleButton(form, config);
+// }
 
 function toggleButton(form, config) {
     const buttons = form.querySelectorAll(config.submitButtonSelector);
     buttons.forEach((button) => {
-        button.disabled = !form.checkValidity();
-        button.classList.toggle(config.inactiveButtonClass, !form.checkValidity());
-    })
-};
-
-function resetForm(window) {
-
-    const inputs = window.querySelectorAll('.popup__input');
-
-    inputs.forEach((input) => {
-        const errorNode = window.querySelector(`#${input.id}-error`);
-        if (errorNode.classList.contains('popup__error_visible')) {
-            errorNode.classList.remove('popup__error_visible');
-            input.value = '';
+        if (!form.checkValidity()) {
+            button.classList.add(config.inactiveButtonClass, !form.checkValidity());
+        } else {
+            button.classList.remove(config.inactiveButtonClass, !form.checkValidity());
         }
     }
-    )
-};
+    )};
+
+
+
 
 
