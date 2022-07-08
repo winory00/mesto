@@ -26,10 +26,10 @@ function handleFormInput(event, form, config) {
     errorNodes.forEach((errorNode) => {
         if (input.validity.valid) {
             errorNode.textContent = '';
-            errorNode.classList.remove('popup__error_visible');
+            errorNode.classList.remove(config.errorClass);
         } else {
             errorNode.textContent = input.validationMessage;
-            errorNode.classList.add('popup__error_visible');
+            errorNode.classList.add(config.errorClass);
         }
         toggleButton(form, config);
     });
@@ -44,11 +44,9 @@ function toggleButton(form, config) {
     const buttons = form.querySelectorAll(config.submitButtonSelector);
     buttons.forEach((button) => {
         button.disabled = !form.checkValidity();
-        button.classList.toggle('popup__button_disabled', !form.checkValidity());
+        button.classList.toggle(config.inactiveButtonClass, !form.checkValidity());
     })
 };
-
-
 
 function resetForm(window) {
 
@@ -63,3 +61,5 @@ function resetForm(window) {
     }
     )
 };
+
+
