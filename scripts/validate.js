@@ -35,10 +35,10 @@ function handleFormInput(event, form, config) {
     });
 };
 
-// function toggleWindowButton(window, config) {
-//     const form = window.querySelector(config.formSelector);
-//     toggleButton(form, config);
-// }
+function toggleWindowButton(window, config) {
+    const form = window.querySelector(config.formSelector);
+    toggleButton(form, config);
+}
 
 function toggleButton(form, config) {
     const buttons = form.querySelectorAll(config.submitButtonSelector);
