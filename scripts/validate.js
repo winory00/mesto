@@ -45,13 +45,15 @@ function toggleButton(form, config) {
     buttons.forEach((button) => {
         if (!form.checkValidity()) {
             button.classList.add(config.inactiveButtonClass, !form.checkValidity());
+            button.setAttribute('disabled', 'disabled');
+        
+
         } else {
             button.classList.remove(config.inactiveButtonClass, !form.checkValidity());
+            button.removeAttribute('disabled');
+        
         }
     }
     )};
-
-
-
 
 
